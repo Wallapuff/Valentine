@@ -33,9 +33,9 @@
             background-color: #4caf50;
             transform: scale(1.05);
         }
-        #noButton:hover {
-            background-color: #e53935;
-            transform: scale(1.05);
+        #noButton {
+            background-color: #ef5350;
+            color: white;
         }
         #tooltip {
             display: none;
@@ -52,8 +52,10 @@
 <body>
     <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Cute bear holding roses" title="Please be my valentine" style="width: 300px;">
     <h1>Will you be my valentine?</h1>
-    <button id="yesButton" style="background-color: #66bb6a; color: white;">Yes</button> 
-    <button id="noButton" style="background-color: #ef5350; color: white;">No</button>
+    <div class="button-container">
+        <button id="yesButton">Yes</button> 
+        <button id="noButton">No</button>
+    </div>
     <div id="tooltip"></div>
     <script>
         const yesButton = document.getElementById('yesButton');
