@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+<!--Author:Wallap-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,16 +42,6 @@
             background-color: #ef5350;
             color: white;
         }
-        #tooltip {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            color: white;
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 14px;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-        }
     </style>
 </head>
 <body>
@@ -60,43 +51,35 @@
         <button id="yesButton">Yes</button> 
         <button id="noButton">No</button>
     </div>
-    <div id="tooltip"></div>
+
     <script>
         const yesButton = document.getElementById('yesButton');
         const noButton = document.getElementById('noButton');
-        const tooltip = document.getElementById('tooltip');
 
+        const noButtonTexts = [
+            "Are you sure?",
+            "Really Sure?",
+            "Are you positive?",
+            "Pookie please...",
+            "Just think about it!",
+            "If you say no, I will be very sad",
+            "I will be very sad..."
+        ];
+
+        let clickCount = 0;
+
+        noButton.addEventListener("click", () => {
+            const currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize + 62) + 'px'; 
+            if (clickCount < noButtonTexts.length) {
+                noButton.textContent = noButtonTexts[clickCount];
+                clickCount++;
+            }
+        });
         yesButton.addEventListener('click', () => {
             const img = document.querySelector('img'); 
             img.src = 'https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif';
-            document.body.innerHTML = img.outerHTML + '<h1> Yay, I love you too!(˶˃ ᵕ ˂˶) .ᐟ❤️</h1>';
-        });
-
-        noButton.addEventListener('click', () => {
-            const currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = (currentSize + 8) + 'px'; 
-        });
-
-        yesButton.addEventListener('mouseover', (event) => {
-            tooltip.textContent = 'Click Me';
-            tooltip.style.display = 'block';
-            tooltip.style.left = event.pageX + 'px';
-            tooltip.style.top = event.pageY + 'px';
-        });
-        
-        yesButton.addEventListener('mouseout', () => {
-            tooltip.style.display = 'none';
-        });
-
-        noButton.addEventListener('mouseover', (event) => {
-            tooltip.textContent = 'Are you sure?';
-            tooltip.style.display = 'block';
-            tooltip.style.left = event.pageX + 'px';
-            tooltip.style.top = event.pageY + 'px';
-        });
-
-        noButton.addEventListener('mouseout', () => {
-            tooltip.style.display = 'none';
+            document.body.innerHTML = img.outerHTML + '<h1> Yay, I love you too! (˶˃ ᵕ ˂˶) .ᐟ❤️</h1>';
         });
     </script>
 </body>
