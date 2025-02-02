@@ -37,24 +37,74 @@
             background-color: #e53935;
             transform: scale(1.05);
         }
+        #tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
     </style>
 </head>
 <body>
     <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Cute bear holding roses" title="Please be my valentine" style="width: 300px;">
     <h1>Will you be my valentine?</h1>
-    <button id="yesButton" style="background-color: #66bb6a; color: white;" title="Click me">Yes</button> 
-    <button id="noButton" style="background-color: #ef5350; color: white;" title="Don't Click me">No</button>
+    <button id="yesButton" style="background-color: #66bb6a; color: white;">Yes</button> 
+    <button id="noButton" style="background-color: #ef5350; color: white;">No</button>
+    <div id="tooltip"></div>
     <script>
         const yesButton = document.getElementById('yesButton');
         const noButton = document.getElementById('noButton');
+        const tooltip = document.getElementById('tooltip');
+
         yesButton.addEventListener('click', () => {
             const img = document.querySelector('img'); 
             img.src = 'https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif';
             document.body.innerHTML = img.outerHTML + '<h1> Yay, I love you too!(˶˃ ᵕ ˂˶) .ᐟ❤️</h1>';
+            
+            const checkEmailButton = document.createElement('button');
+            checkEmailButton.textContent = 'Check Your Email';
+            checkEmailButton.style.backgroundColor = '#66bb6a';
+            checkEmailButton.style.color = 'white';
+            checkEmailButton.style.fontSize = '16px';
+            checkEmailButton.style.padding = '10px 20px';
+            checkEmailButton.style.margin = '5px';
+            checkEmailButton.style.cursor = 'pointer';
+            checkEmailButton.style.border = 'none';
+            checkEmailButton.style.borderRadius = '10px';
+            checkEmailButton.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
+            checkEmailButton.style.fontFamily = "'Comic Sans MS', cursive, sans-serif";
+            document.body.appendChild(checkEmailButton);
         });
+
         noButton.addEventListener('click', () => {
             const currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
             yesButton.style.fontSize = (currentSize + 4) + 'px'; 
+        });
+
+        yesButton.addEventListener('mouseover', (event) => {
+            tooltip.textContent = 'Click Me';
+            tooltip.style.display = 'block';
+            tooltip.style.left = event.pageX + 'px';
+            tooltip.style.top = event.pageY + 'px';
+        });
+        
+        yesButton.addEventListener('mouseout', () => {
+            tooltip.style.display = 'none';
+        });
+
+        noButton.addEventListener('mouseover', (event) => {
+            tooltip.textContent = 'Are you sure?';
+            tooltip.style.display = 'block';
+            tooltip.style.left = event.pageX + 'px';
+            tooltip.style.top = event.pageY + 'px';
+        });
+
+        noButton.addEventListener('mouseout', () => {
+            tooltip.style.display = 'none';
         });
     </script>
 </body>
