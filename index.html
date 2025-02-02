@@ -64,20 +64,6 @@
             const img = document.querySelector('img'); 
             img.src = 'https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif';
             document.body.innerHTML = img.outerHTML + '<h1> Yay, I love you too!(˶˃ ᵕ ˂˶) .ᐟ❤️</h1>';
-            
-            const checkEmailButton = document.createElement('button');
-            checkEmailButton.textContent = 'Check Your Email';
-            checkEmailButton.style.backgroundColor = '#66bb6a';
-            checkEmailButton.style.color = 'white';
-            checkEmailButton.style.fontSize = '16px';
-            checkEmailButton.style.padding = '10px 20px';
-            checkEmailButton.style.margin = '5px';
-            checkEmailButton.style.cursor = 'pointer';
-            checkEmailButton.style.border = 'none';
-            checkEmailButton.style.borderRadius = '10px';
-            checkEmailButton.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
-            checkEmailButton.style.fontFamily = "'Comic Sans MS', cursive, sans-serif";
-            document.body.appendChild(checkEmailButton);
         });
 
         noButton.addEventListener('click', () => {
